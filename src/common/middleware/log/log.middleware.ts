@@ -11,7 +11,7 @@ export function logging(app: Express): void {
       query,
       params,
     };
-    // console.log(requestLog);
+    console.log(requestLog);
 
     let data = null;
     const oldSend = res.send;
