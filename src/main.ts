@@ -3,7 +3,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import { logging } from './common/middleware/log/log.middleware';
 import { responseFormatter } from './common/middleware/response/responseFormatter.middleware';
 import { errorMiddleWare } from './common/middleware/error/error.middleware';
-import basicRouter from './common/basic/basic.controller';
+import basicRouter from './basic/basic.controller';
 
 env.config({ path: './config/.env' });
 const app = express();
