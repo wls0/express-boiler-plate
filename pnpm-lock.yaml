@@ -14,10 +14,16 @@ importers:
       express:
         specifier: ^5.1.0
         version: 5.1.0
+      http-errors:
+        specifier: ^2.0.0
+        version: 2.0.0
     devDependencies:
       '@types/express':
         specifier: ^5.0.2
         version: 5.0.2
+      '@types/http-errors':
+        specifier: ^2.0.5
+        version: 2.0.5
       '@types/node':
         specifier: ^22.15.29
         version: 22.15.29
@@ -479,8 +485,8 @@ packages:
   '@types/graceful-fs@4.1.9':
     resolution: {integrity: sha512-olP3sd1qOEe5dXTSaFvQG+02VdRXcdytWLAZsAq1PecU8uqQAhkrnbli7DagjtXKW/Bl7YJbUsa8MPcuc8LHEQ==}
 
-  '@types/http-errors@2.0.4':
-    resolution: {integrity: sha512-D0CFMMtydbJAegzOyHjtiKPLlvnm3iTZyZRSZoLq2mRhDdmLfIWOCYPfQJ4cu2erKghU++QvjcUjp/5h7hESpA==}
+  '@types/http-errors@2.0.5':
+    resolution: {integrity: sha512-r8Tayk8HJnX0FztbZN7oVqGccWgw98T/0neJphO91KkmOzug1KkofZURD4UaD5uH8AqcFLfdPErnBod0u71/qg==}
 
   '@types/istanbul-lib-coverage@2.0.6':
     resolution: {integrity: sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==}
@@ -3258,7 +3264,7 @@ snapshots:
     dependencies:
       '@types/node': 22.15.29
 
-  '@types/http-errors@2.0.4': {}
+  '@types/http-errors@2.0.5': {}
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 
@@ -3291,7 +3297,7 @@ snapshots:
 
   '@types/serve-static@1.15.7':
     dependencies:
-      '@types/http-errors': 2.0.4
+      '@types/http-errors': 2.0.5
       '@types/node': 22.15.29
       '@types/send': 0.17.4
 
