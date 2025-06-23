@@ -1,13 +1,19 @@
 import env from 'dotenv';
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
+import cors from 'cors';
+
 import { logging } from './common/middleware/log/log.middleware';
 import { responseFormatter } from './common/middleware/response/responseFormatter.middleware';
 import { errorMiddleWare } from './common/middleware/error/error.middleware';
-import basicRouter from './basic/basic.controller';
 import { NotFoundError } from './common/util/error';
 
+import basicRouter from './basic/basic.controller';
+
 env.config({ path: './config/.env' });
+
 const app = express();
+app.use(cors());
+app.use(express.json());
 logging(app);
 responseFormatter(app);
 
@@ -22,5 +28,5 @@ app.use(() => {
 errorMiddleWare(app);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running`);
 });

@@ -6,6 +6,7 @@ export function errorMiddleWare(app: Express): void {
     const errorForm: ErrorResponse = {
       success: false,
       code: err.status || 500,
+      error: err.error,
       message: err.message || 'Internal Server Error',
       method: req.method,
       path: req.url,

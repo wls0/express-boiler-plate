@@ -1,7 +1,19 @@
 import http from 'http-errors';
+import typia from 'typia';
+
+function errorMessageFormat(message: string | typia.IValidation.IError[]) {
+  if (Array.isArray(message)) {
+    return JSON.stringify(message);
+  }
+  return message;
+}
 
 export class BadRequestError extends http.BadRequest {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
+
     super(message);
     this.status = 400;
     this.error = 'BadRequest';
@@ -10,7 +22,10 @@ export class BadRequestError extends http.BadRequest {
 }
 
 export class UnauthorizedError extends http.Unauthorized {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 401;
     this.error = 'Unauthorized';
@@ -19,7 +34,10 @@ export class UnauthorizedError extends http.Unauthorized {
 }
 
 export class ForbiddenError extends http.Forbidden {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 403;
     this.error = 'Forbidden';
@@ -28,7 +46,10 @@ export class ForbiddenError extends http.Forbidden {
 }
 
 export class NotFoundError extends http.NotFound {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 404;
     this.error = 'NotFound';
@@ -37,7 +58,10 @@ export class NotFoundError extends http.NotFound {
 }
 
 export class MethodNotAllowedError extends http.MethodNotAllowed {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 405;
     this.error = 'MethodNotAllowed';
@@ -46,7 +70,10 @@ export class MethodNotAllowedError extends http.MethodNotAllowed {
 }
 
 export class NotAcceptableError extends http.NotAcceptable {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 406;
     this.error = 'NotAcceptable';
@@ -55,7 +82,10 @@ export class NotAcceptableError extends http.NotAcceptable {
 }
 
 export class RequestTimeoutError extends http.RequestTimeout {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 408;
     this.error = 'RequestTimeout';
@@ -64,7 +94,10 @@ export class RequestTimeoutError extends http.RequestTimeout {
 }
 
 export class ConflictError extends http.Conflict {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 409;
     this.error = 'Conflict';
@@ -73,7 +106,10 @@ export class ConflictError extends http.Conflict {
 }
 
 export class GoneError extends http.Gone {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 410;
     this.error = 'Gone';
@@ -82,7 +118,10 @@ export class GoneError extends http.Gone {
 }
 
 export class PreconditionFailedError extends http.PreconditionFailed {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 412;
     this.error = 'PreconditionFailed';
@@ -100,7 +139,10 @@ export class PayloadTooLargeError extends http.PayloadTooLarge {
 }
 
 export class UnsupportedMediaTypeError extends http.UnsupportedMediaType {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 415;
     this.error = 'UnsupportedMediaType';
@@ -109,7 +151,10 @@ export class UnsupportedMediaTypeError extends http.UnsupportedMediaType {
 }
 
 export class ImATeapotError extends http.ImATeapot {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 418;
     this.error = 'ImATeapot';
@@ -118,7 +163,10 @@ export class ImATeapotError extends http.ImATeapot {
 }
 
 export class UnprocessableEntityError extends http.UnprocessableEntity {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 422;
     this.error = 'UnprocessableEntity';
@@ -127,7 +175,10 @@ export class UnprocessableEntityError extends http.UnprocessableEntity {
 }
 
 export class InternalServerError extends http.InternalServerError {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 500;
     this.error = 'InternalServerError';
@@ -136,7 +187,10 @@ export class InternalServerError extends http.InternalServerError {
 }
 
 export class NotImplementedError extends http.NotImplemented {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 501;
     this.error = 'NotImplemented';
@@ -145,7 +199,10 @@ export class NotImplementedError extends http.NotImplemented {
 }
 
 export class BadGatewayError extends http.BadGateway {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 502;
     this.error = 'BadGateway';
@@ -154,7 +211,10 @@ export class BadGatewayError extends http.BadGateway {
 }
 
 export class ServiceUnavailableError extends http.ServiceUnavailable {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 503;
     this.error = 'ServiceUnavailable';
@@ -163,7 +223,10 @@ export class ServiceUnavailableError extends http.ServiceUnavailable {
 }
 
 export class GatewayTimeoutError extends http.GatewayTimeout {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 504;
     this.error = 'GatewayTimeout';
@@ -172,7 +235,10 @@ export class GatewayTimeoutError extends http.GatewayTimeout {
 }
 
 export class HttpVersionNotSupportedError extends http.HTTPVersionNotSupported {
-  constructor(message?: string) {
+  constructor(message?: string | typia.IValidation.IError[]) {
+    if (Array.isArray(message)) {
+      message = errorMessageFormat(message);
+    }
     super(message);
     this.status = 505;
     this.error = 'HttpVersionNotSupported';
