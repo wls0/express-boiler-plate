@@ -1,13 +1,28 @@
-import { Router } from 'express';
+import { Controller, Post, Body, Route, Response, SuccessResponse, Example, Tags } from 'tsoa';
+import { basicValidate } from './vaildate/basic.vaildate';
+import { BasicResDto } from './dto/basic.res.dto';
+import { ICommonResponse } from '../common/dto/common.res.dto';
+import typia from 'typia';
 import { BasicService } from './basic.service';
+import { BasicReqDto } from './dto/basic.req.dto';
 
-const router: Router = Router();
 const basicService = new BasicService();
+@Route('basic')
+@Tags('basic')
+export class BasicController extends Controller {
+  @Post('/test')
+  @Example<ICommonResponse<BasicResDto>>({
+    code: 201,
+    success: true,
+    data: { test: 'abc12' },
+  })
+  @SuccessResponse('201', 'Basic successful')
+  async test(@Body() reqBody: BasicReqDto) {
+    const body = basicValidate(reqBody);
 
-router.get('/', (req, res) => {
-  res.json({
-    data: basicService.getHello(),
-  });
-});
+    const data = await basicService.test(body);
 
-export default router;
+    const json = typia.json.assertStringify<BasicResDto>(data);
+    return typia.json.assertParse<BasicResDto>(json);
+  }
+}

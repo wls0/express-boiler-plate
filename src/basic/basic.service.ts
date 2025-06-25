@@ -1,5 +1,10 @@
+import { BasicReqDto } from './dto/basic.req.dto';
+
 export class BasicService {
-  getHello(): string {
-    return 'Hello, World!';
+  constructor() {}
+  async test(body: BasicReqDto) {
+    return {
+      test: 'abc12',
+    };
   }
 }

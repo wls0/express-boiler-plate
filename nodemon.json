@@ -1,6 +1,6 @@
 {
   "watch": ["src"],
   "ext": "ts",
-  "ignore": ["dist"],
-  "exec": "ts-node src/main.ts"
+  "ignore": ["swagger.json", "tsoa.json", "routes.ts", "dist", "node_modules"],
+  "exec": "npm run tsoa-routes && npm run tsoa-spec && npm run build && node dist/main.js"
 }

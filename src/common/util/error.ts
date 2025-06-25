@@ -5,6 +5,7 @@ function errorMessageFormat(message: string | typia.IValidation.IError[]) {
   if (Array.isArray(message)) {
     return JSON.stringify(message);
   }
+
   return message;
 }
 
@@ -50,6 +51,7 @@ export class NotFoundError extends http.NotFound {
     if (Array.isArray(message)) {
       message = errorMessageFormat(message);
     }
+
     super(message);
     this.status = 404;
     this.error = 'NotFound';
