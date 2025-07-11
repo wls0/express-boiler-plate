@@ -9,8 +9,4 @@ export interface ICommonResponse<T> {
    * @example true
    */
   success: boolean;
-  /**
-   * 응답 데이터
-   */
-  data: T;
 }
